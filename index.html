@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Berry Vibes Studio | Mood Mixer Poem</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Nunito:wght@400;700;900&display=swap" 
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header class="hero">
+    <p class="label">Berry Vibes Studio Presents</p>
+    <h1>CCD Mood Mixer Poem</h1>
+
+    <p class="intro">
+      Click a mood, collect a recipe, and watch the poem build itself like a tiny cozy app. 
+      This is not a battle anymore — it is a vending machine for comfort, creativity, and confidence.
+    </p>
+
+    <a class="start-link" href="#mixer">Open the Mixer 🍓</a>
+  </header>
+
+  <main>
+    <section class="mixer" id="mixer">
+      <div class="section-heading">
+        <p class="label">Choose Your Mood</p>
+        <h2>What does your creative self need?</h2>
+      </div>
+
+      <div class="mood-buttons" aria-label="Mood choices">
+        <button type="button" data-mood="soft">Soft Comfort 🍞</button>
+        <button type="button" data-mood="sparkle">Sweet Sparkle 🍩</button>
+        <button type="button" data-mood="focus">Mocha Focus ☕</button>
+        <button type="button" data-mood="bold">Savory Bold 🌯</button>
+        <button type="button" data-mood="glow">Morning Glow 🥞</button>
+      </div>
+
+      <div class="app-window">
+        <section class="recipe-card" aria-live="polite">
+          <p class="mini-title">Current Recipe Card</p>
+          <h3 id="recipeName">Tap a mood to generate a CCD recipe card.</h3>
+          <p id="recipeText">
+            The poem is waiting in the mixer. Pick a button above and let Berry Vibes choose the flavor.
+          </p>
+        </section>
+
+        <section class="poem-card">
+          <p class="mini-title">Poem Built So Far</p>
+          <div id="poemLines" class="poem-lines">
+            <p>🍓 No lines yet. Click a mood to begin.</p>
+          </div>
+
+          <div class="controls">
+            <button id="shufflePoem" type="button">Shuffle Poem 🔀</button>
+            <button id="scatterPoem" type="button">Scatter Mode ✨</button>
+            <button id="resetPoem" type="button">Reset 🍓</button>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="recipe-shelf">
+      <div class="section-heading">
+        <p class="label">CCD Recipe Shelf</p>
+        <h2>All the flavors hiding in the app</h2>
+      </div>
+
+      <div class="shelf-grid">
+        <article>🥞 Pumpkin Flaxseed Hotcakes</article>
+        <article>🍞 Cinnamon French Toast</article>
+        <article>🌀 Microwave Cinnamon Rolls</article>
+        <article>🍩 Clear Glaze Donuts</article>
+        <article>🍰 Cinnamon Mug Cake</article>
+        <article>🍫 Chocolate Ramekin Cake</article>
+        <article>🟫 Fudgy CCD Brownies</article>
+        <article>🥣 Oreo Yogurt Ice Cream</article>
+        <article>☕ Cinnamon Roll Latte</article>
+        <article>🍫 Cafe Mocha Shake</article>
+        <article>🌯 Chicken Tortilla Melt</article>
+        <article>🍕 Pizza Tortilla</article>
+        <article>🥯 Bagel Egg Sandwich</article>
+        <article>🧋 Hot Mocha Coffee</article>
+        <article>🌶️ Chili Mocha</article>
+      </div>
+    </section>
+
+    <section class="artist-note">
+      <h2>Artist Statement</h2>
+      <p>
+        This interactive poem uses Berry Vibes Studio as a playful app concept. 
+        Instead of reading a poem from top to bottom, the viewer generates the poem by choosing moods.
+      </p>
+
+      <p>
+        Each mood unlocks a CCD recipe and a poetic line. 
+        The recipes represent comfort, focus, sweetness, boldness, and growth. 
+        The poem changes order through shuffling and scattering, so the layout becomes part of the meaning.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Berry Vibes Studio • CCD Mood Mixer Poem • HTML + CSS + JavaScript 🍓</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

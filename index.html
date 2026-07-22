@@ -2,117 +2,157 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A playful Berry Vibes Studio interactive poem and draggable CCD recipe comparison puzzle by Danielle Julian.">
+  <title>CCD Recipe Battle — An Interactive Poem by Danielle Julian</title>
 
-  <title>Berry Vibes Studio | Mood Mixer Poem</title>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Nunito:wght@400;700;900&display=swap" 
-    rel="stylesheet"
-  >
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
 </head>
-
 <body>
+  <div class="berry-sparkles" aria-hidden="true"></div>
+
   <header class="hero">
-    <p class="label">Berry Vibes Studio Presents</p>
-    <h1>CCD Mood Mixer Poem</h1>
+    <div class="hero-copy">
+      <p class="eyebrow">Berry Vibes Studio presents</p>
+      <h1>CCD Recipe Battle</h1>
+      <p class="subtitle">A draggable comparison puzzle that builds a poem one cozy recipe at a time.</p>
+      <div class="hero-actions">
+        <button class="primary-button" id="new-round" type="button">Start a new battle</button>
+        <button class="secondary-button" id="open-vault" type="button">Open the recipe vault</button>
+      </div>
+    </div>
 
-    <p class="intro">
-      Click a mood, collect a recipe, and watch the poem build itself like a tiny cozy app. 
-      This is not a battle anymore — it is a vending machine for comfort, creativity, and confidence.
-    </p>
-
-    <a class="start-link" href="#mixer">Open the Mixer 🍓</a>
+    <figure class="mascot-card">
+      <img src="images/BerryBelle.jpg" alt="BerryBelle, a cheerful pink strawberry milk carton mascot">
+      <figcaption>BerryBelle is your puzzle guide 🍓</figcaption>
+    </figure>
   </header>
 
-  <main>
-    <section class="mixer" id="mixer">
-      <div class="section-heading">
-        <p class="label">Choose Your Mood</p>
-        <h2>What does your creative self need?</h2>
+  <main class="app-shell">
+    <section class="instructions panel" aria-labelledby="how-to-play">
+      <div>
+        <p class="section-kicker">How to play</p>
+        <h2 id="how-to-play">Drag each CCD recipe into its correct comparison battle.</h2>
+        <p>Mouse, touch, and keyboard all work. On a keyboard, select a tile with <strong>Enter</strong>, then select a battle zone.</p>
       </div>
-
-      <div class="mood-buttons" aria-label="Mood choices">
-        <button type="button" data-mood="soft">Soft Comfort 🍞</button>
-        <button type="button" data-mood="sparkle">Sweet Sparkle 🍩</button>
-        <button type="button" data-mood="focus">Mocha Focus ☕</button>
-        <button type="button" data-mood="bold">Savory Bold 🌯</button>
-        <button type="button" data-mood="glow">Morning Glow 🥞</button>
-      </div>
-
-      <div class="app-window">
-        <section class="recipe-card" aria-live="polite">
-          <p class="mini-title">Current Recipe Card</p>
-          <h3 id="recipeName">Tap a mood to generate a CCD recipe card.</h3>
-          <p id="recipeText">
-            The poem is waiting in the mixer. Pick a button above and let Berry Vibes choose the flavor.
-          </p>
-        </section>
-
-        <section class="poem-card">
-          <p class="mini-title">Poem Built So Far</p>
-          <div id="poemLines" class="poem-lines">
-            <p>🍓 No lines yet. Click a mood to begin.</p>
-          </div>
-
-          <div class="controls">
-            <button id="shufflePoem" type="button">Shuffle Poem 🔀</button>
-            <button id="scatterPoem" type="button">Scatter Mode ✨</button>
-            <button id="resetPoem" type="button">Reset 🍓</button>
-          </div>
-        </section>
+      <div class="score-card" aria-live="polite">
+        <span id="score">0</span>
+        <small>of <span id="round-total">12</span> recipes placed</small>
       </div>
     </section>
 
-    <section class="recipe-shelf">
-      <div class="section-heading">
-        <p class="label">CCD Recipe Shelf</p>
-        <h2>All the flavors hiding in the app</h2>
+    <section class="progress-wrap" aria-label="Puzzle progress">
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
       </div>
-
-      <div class="shelf-grid">
-        <article>🥞 Pumpkin Flaxseed Hotcakes</article>
-        <article>🍞 Cinnamon French Toast</article>
-        <article>🌀 Microwave Cinnamon Rolls</article>
-        <article>🍩 Clear Glaze Donuts</article>
-        <article>🍰 Cinnamon Mug Cake</article>
-        <article>🍫 Chocolate Ramekin Cake</article>
-        <article>🟫 Fudgy CCD Brownies</article>
-        <article>🥣 Oreo Yogurt Ice Cream</article>
-        <article>☕ Cinnamon Roll Latte</article>
-        <article>🍫 Cafe Mocha Shake</article>
-        <article>🌯 Chicken Tortilla Melt</article>
-        <article>🍕 Pizza Tortilla</article>
-        <article>🥯 Bagel Egg Sandwich</article>
-        <article>🧋 Hot Mocha Coffee</article>
-        <article>🌶️ Chili Mocha</article>
-      </div>
+      <p id="game-status" class="status" role="status" aria-live="polite">Choose a tile and begin the battle.</p>
     </section>
 
-    <section class="artist-note">
-      <h2>Artist Statement</h2>
-      <p>
-        This interactive poem uses Berry Vibes Studio as a playful app concept. 
-        Instead of reading a poem from top to bottom, the viewer generates the poem by choosing moods.
-      </p>
+    <section class="game-layout">
+      <section class="recipe-deck panel" aria-labelledby="recipe-deck-title">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-kicker">Puzzle pieces</p>
+            <h2 id="recipe-deck-title">CCD Recipe Tiles</h2>
+          </div>
+          <button class="tiny-button" id="shuffle-tiles" type="button">Shuffle tiles</button>
+        </div>
+        <p class="helper-text">Drag a tile, or tap/click it and then tap/click a matching battle zone.</p>
+        <div id="tile-pool" class="tile-pool" aria-label="Recipe tiles"></div>
+      </section>
 
-      <p>
-        Each mood unlocks a CCD recipe and a poetic line. 
-        The recipes represent comfort, focus, sweetness, boldness, and growth. 
-        The poem changes order through shuffling and scattering, so the layout becomes part of the meaning.
-      </p>
+      <section class="battle-board panel" aria-labelledby="battle-board-title">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-kicker">Comparison battle</p>
+            <h2 id="battle-board-title">Where does each recipe compete?</h2>
+          </div>
+        </div>
+
+        <div class="drop-grid" id="drop-grid">
+          <article class="drop-zone" data-category="breakfast" tabindex="0" role="button" aria-label="Breakfast versus diner stack drop zone">
+            <div class="zone-top"><span class="zone-emoji">🥞</span><span class="zone-count">0</span></div>
+            <h3>Breakfast vs. Diner Stack</h3>
+            <p>Fluffy, cinnamony, and built for a cozy morning.</p>
+            <div class="zone-items" aria-label="Placed breakfast recipes"></div>
+          </article>
+
+          <article class="drop-zone" data-category="bakery" tabindex="0" role="button" aria-label="Bakery versus pastry case drop zone">
+            <div class="zone-top"><span class="zone-emoji">🍩</span><span class="zone-count">0</span></div>
+            <h3>Bakery vs. Pastry Case</h3>
+            <p>Soft spirals, glazes, domes, and handheld joy.</p>
+            <div class="zone-items" aria-label="Placed bakery recipes"></div>
+          </article>
+
+          <article class="drop-zone" data-category="chocolate" tabindex="0" role="button" aria-label="Chocolate versus dessert bar drop zone">
+            <div class="zone-top"><span class="zone-emoji">🍫</span><span class="zone-count">0</span></div>
+            <h3>Chocolate vs. Dessert Bar</h3>
+            <p>Fudgy, gooey, cocoa-rich recipes enter the ring.</p>
+            <div class="zone-items" aria-label="Placed chocolate recipes"></div>
+          </article>
+
+          <article class="drop-zone" data-category="drinks" tabindex="0" role="button" aria-label="Drinks versus coffee shop drop zone">
+            <div class="zone-top"><span class="zone-emoji">☕</span><span class="zone-count">0</span></div>
+            <h3>Drinks vs. Coffee Shop</h3>
+            <p>Mocha clouds, cinnamon steam, and cozy sips.</p>
+            <div class="zone-items" aria-label="Placed drink recipes"></div>
+          </article>
+
+          <article class="drop-zone" data-category="savory" tabindex="0" role="button" aria-label="Savory versus fast food drop zone">
+            <div class="zone-top"><span class="zone-emoji">🌯</span><span class="zone-count">0</span></div>
+            <h3>Savory vs. Fast Food</h3>
+            <p>Melty, crisp, garlicky, and ready to hold the day together.</p>
+            <div class="zone-items" aria-label="Placed savory recipes"></div>
+          </article>
+
+          <article class="drop-zone" data-category="chilled" tabindex="0" role="button" aria-label="Chilled versus ice cream shop drop zone">
+            <div class="zone-top"><span class="zone-emoji">🍨</span><span class="zone-count">0</span></div>
+            <h3>Chilled vs. Ice-Cream Shop</h3>
+            <p>Thick, creamy, cold, and spoonably dramatic.</p>
+            <div class="zone-items" aria-label="Placed chilled recipes"></div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section class="poem-panel panel" aria-labelledby="poem-title">
+      <div class="poem-intro">
+        <p class="section-kicker">Interactive poem</p>
+        <h2 id="poem-title">The poem appears as the puzzle is solved.</h2>
+        <p>Every correct comparison releases one line. Rearranging recipes becomes the act of writing.</p>
+      </div>
+      <div id="poem-stage" class="poem-stage" aria-live="polite"></div>
     </section>
   </main>
 
-  <footer>
-    <p>Berry Vibes Studio • CCD Mood Mixer Poem • HTML + CSS + JavaScript 🍓</p>
-  </footer>
+  <dialog id="recipe-vault" class="vault-dialog">
+    <div class="dialog-head">
+      <div>
+        <p class="section-kicker">Danielle's collection</p>
+        <h2>CCD Recipe Vault</h2>
+      </div>
+      <button id="close-vault" class="close-button" type="button" aria-label="Close recipe vault">×</button>
+    </div>
+    <p class="vault-note">The game selects twelve recipes each round, while the vault keeps the full safe signature collection together.</p>
+    <div class="filter-row" id="filter-row" aria-label="Recipe filters"></div>
+    <div id="vault-grid" class="vault-grid"></div>
+  </dialog>
 
-  <script src="js/script.js"></script>
+  <div id="celebration" class="celebration" hidden>
+    <div class="celebration-card" role="dialog" aria-modal="true" aria-labelledby="win-title">
+      <p class="celebration-emoji">🍓✨🏆✨🍓</p>
+      <h2 id="win-title">Cozy Core wins the battle!</h2>
+      <p>You solved the recipe puzzle and completed the poem.</p>
+      <button id="play-again" class="primary-button" type="button">Play another round</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>Designed and coded by Danielle Julian · Berry Vibes Studio · Interactive Poem</p>
+  </footer>
 </body>
 </html>

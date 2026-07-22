@@ -1,0 +1,231 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ff8fab;
+  --light-pink: #fff0f5;
+  --cream: #fffaf0;
+  --berry: #8a1538;
+  --red: #d6336c;
+  --yellow: #ffe066;
+  --green: #95d5b2;
+  --brown: #4a2c2a;
+  --white: #ffffff;
+  --shadow: 0 18px 40px rgba(138, 21, 56, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--brown);
+  background:
+    radial-gradient(circle at 10% 10%, rgba(255, 224, 102, 0.45), transparent 28%),
+    radial-gradient(circle at 90% 20%, rgba(255, 143, 171, 0.45), transparent 30%),
+    linear-gradient(135deg, #fffaf0, #ffe3ec, #fff6fb);
+  font-family: "Nunito", Arial, sans-serif;
+}
+
+.hero,
+main,
+footer {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.hero {
+  min-height: 82vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 70px 0;
+}
+
+.label,
+.mini-title {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 900;
+  color: var(--red);
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cherry Bomb One", cursive;
+  color: var(--berry);
+  line-height: 1;
+  margin: 10px 0;
+}
+
+h1 {
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  text-shadow: 4px 4px 0 var(--yellow);
+}
+
+h2 {
+  font-size: clamp(2.4rem, 6vw, 4.8rem);
+}
+
+h3 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+p,
+button,
+a,
+article {
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.intro {
+  max-width: 780px;
+  font-size: 1.25rem;
+}
+
+.start-link,
+button {
+  border: 3px solid var(--berry);
+  border-radius: 999px;
+  padding: 13px 18px;
+  background: var(--white);
+  color: var(--berry);
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 5px 5px 0 var(--pink);
+  cursor: pointer;
+}
+
+.start-link:hover,
+button:hover {
+  background: var(--yellow);
+  transform: translateY(-3px);
+}
+
+.mixer,
+.recipe-shelf,
+.artist-note {
+  background: rgba(255, 255, 255, 0.88);
+  border: 3px solid var(--pink);
+  border-radius: 34px;
+  padding: clamp(22px, 4vw, 42px);
+  box-shadow: var(--shadow);
+  margin-bottom: 35px;
+}
+
+.section-heading {
+  max-width: 820px;
+}
+
+.mood-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 26px 0;
+}
+
+.app-window {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.recipe-card,
+.poem-card {
+  border: 3px solid var(--pink);
+  border-radius: 30px;
+  background: var(--light-pink);
+  padding: 24px;
+}
+
+.recipe-card {
+  min-height: 330px;
+  position: relative;
+  overflow: hidden;
+}
+
+.recipe-card::after {
+  content: "🍓";
+  position: absolute;
+  right: 22px;
+  bottom: 10px;
+  font-size: 5rem;
+  opacity: 0.18;
+}
+
+.recipe-card.pop {
+  animation: pop 0.36s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  55% { transform: scale(1.035) rotate(-1deg); }
+  100% { transform: scale(1); }
+}
+
+.poem-lines {
+  min-height: 245px;
+  padding: 18px;
+  border-radius: 24px;
+  background: var(--white);
+  border: 2px dashed var(--pink);
+}
+
+.poem-lines p {
+  margin: 0 0 10px;
+  font-weight: 800;
+}
+
+.poem-lines.scatter p {
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 10px;
+  border: 2px solid var(--pink);
+  border-radius: 18px;
+  background: #fffaf0;
+  transform: rotate(var(--tilt));
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.shelf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.shelf-grid article {
+  background: var(--cream);
+  border: 2px solid var(--pink);
+  border-radius: 22px;
+  padding: 16px;
+  font-weight: 900;
+}
+
+footer {
+  text-align: center;
+  padding: 35px 0 50px;
+  font-weight: 900;
+  color: var(--berry);
+}
+
+@media (max-width: 850px) {
+  .app-window,
+  .shelf-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+}
